@@ -1,0 +1,1 @@
+new Roll(`2d6`).roll().toMessage({ flavor: `Hellhound does 2d6 damage direct to the Netrunner's brain. Unless insulated, their Cyberdeck catches fire along with their clothing. Until they spend a Meat Action to put themselves out, they take 2 damage to their HP whenever they end their Turn. Multiple instances of this effect cannot stack.`, speaker})
