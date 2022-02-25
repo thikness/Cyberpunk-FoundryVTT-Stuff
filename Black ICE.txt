@@ -1,1 +1,12 @@
-new Roll(`2d6`).roll().toMessage({ flavor: `Hellhound does 2d6 damage direct to the Netrunner's brain. Unless insulated, their Cyberdeck catches fire along with their clothing. Until they spend a Meat Action to put themselves out, they take 2 damage to their HP whenever they end their Turn. Multiple instances of this effect cannot stack.`, speaker})
+
+//Script to roll a die
+//Equivalently could be done by changing the macro to chat and entering /r 1d6
+//You can roll any number and any type of dice by changing Roll to ndx
+    //n: number of dice
+    //x: value (number of sides) on die
+
+const roll = new Roll(`2d6`);
+roll.roll();
+roll.toMessage({
+    flavor: "Type whatever you want here to have it show up in the chat, such as Black Ice attack effects.",
+});
