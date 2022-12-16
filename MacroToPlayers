@@ -1,0 +1,19 @@
+const macroId = "teblr5OWEeuUnNa6";
+
+function findUnusedHotbarSlot(user) {
+  for (let i = 1; i < 51; i++) {
+    if (!(game.macros.has(user.data.hotbar[i]))) {
+      return i;
+    }
+  }
+  return null;
+}
+
+for (const user of game.users) {
+  const unusedHotbarSlot = findUnusedHotbarSlot(user);
+  if (unusedHotbarSlot !== null) {
+    await user.update({ [`hotbar.${unusedHotbarSlot}`]: macroId });
+  } else {
+    ui.notifications.warn(`Skipped pushing macro to user '${user.name}' because they don't have a free hotbarslot`);
+  }
+}
