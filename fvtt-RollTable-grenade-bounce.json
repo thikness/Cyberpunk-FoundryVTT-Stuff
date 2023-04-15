@@ -1,0 +1,386 @@
+{
+  "name": "Grenade Bounce",
+  "img": "icons/svg/d10-grey.svg",
+  "description": "",
+  "results": [
+    {
+      "_id": "CJnJXGASByPmQaEz",
+      "type": 0,
+      "text": "Up 2, Left 2",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "QkzC1K3c8uzSk42e",
+      "type": 0,
+      "text": "Up 2, Left 1",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "rbFHy4ENFIt0gPD1",
+      "type": 0,
+      "text": "Up 2",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "QwStVQA2ZdmqJQP5",
+      "type": 0,
+      "text": "Up 2, Right 1",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "ARJW5fqhekAEkvuQ",
+      "type": 0,
+      "text": "Up 2, Right 2",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "6XbbR4mZjpB4qhJI",
+      "type": 0,
+      "text": "Up 1, Left 2",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "VQ4clTMm9ZXSfdy6",
+      "type": 0,
+      "text": "Up 1, Left 1",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "m9NWnOToWDJQCUzV",
+      "type": 0,
+      "text": "Up 1",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "yHUZudyGhN154C0j",
+      "type": 0,
+      "text": "Up 1, Right 1",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "Gztn2zYcv9IYQG7G",
+      "type": 0,
+      "text": "Up 1, Right 2",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "we7DIQSnaLDfeSge",
+      "type": 0,
+      "text": "Left 2",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "XupfPOHgpgpBH9rI",
+      "type": 0,
+      "text": "Left 1",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "0u1BUc8igWYKj8KE",
+      "type": 0,
+      "text": "Right 1",
+      "weight": 1,
+      "range": [
+        14,
+        14
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "RXYBtdqsKcpHfzZ5",
+      "type": 0,
+      "text": "Right 2",
+      "weight": 1,
+      "range": [
+        15,
+        15
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "SXXfiOkbWuFhnqr9",
+      "type": 0,
+      "text": "Down 1, Left 2",
+      "weight": 1,
+      "range": [
+        16,
+        16
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "R3zd8Uc1awLMrZU2",
+      "type": 0,
+      "text": "Down 1, Left 1",
+      "weight": 1,
+      "range": [
+        17,
+        17
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "ErQyrzbctTGRPqcq",
+      "type": 0,
+      "text": "Down 1",
+      "weight": 1,
+      "range": [
+        18,
+        18
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "0IoQwoDE0RC4cNHO",
+      "type": 0,
+      "text": "Down 1, Right 1",
+      "weight": 1,
+      "range": [
+        19,
+        19
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "aiuOGq9DArKvzmzx",
+      "type": 0,
+      "text": "Down 1, Right 2",
+      "weight": 1,
+      "range": [
+        20,
+        20
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "fPCP6Jn8Ig8yhpjc",
+      "type": 0,
+      "text": "Down 2, Left 2",
+      "weight": 1,
+      "range": [
+        21,
+        21
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "TJyZHxuHKGbzPjiP",
+      "type": 0,
+      "text": "Down 2, Left 1",
+      "weight": 1,
+      "range": [
+        22,
+        22
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "Iymx99EK7FTfz5zR",
+      "type": 0,
+      "text": "Down 2",
+      "weight": 1,
+      "range": [
+        23,
+        23
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "Y0LNtqwLdTUV8TOt",
+      "type": 0,
+      "text": "Down 2, Right 1",
+      "weight": 1,
+      "range": [
+        24,
+        24
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    },
+    {
+      "_id": "URQHE6xQaYjOXWpk",
+      "type": 0,
+      "text": "Down 2, Right 2",
+      "weight": 1,
+      "range": [
+        25,
+        25
+      ],
+      "drawn": false,
+      "flags": {},
+      "img": "icons/svg/d20-black.svg",
+      "documentCollection": "",
+      "documentId": null
+    }
+  ],
+  "formula": "1d24",
+  "replacement": true,
+  "displayRoll": true,
+  "flags": {
+    "exportSource": {
+      "world": "cyberpunk-red",
+      "system": "cyberpunk-red-core",
+      "coreVersion": "10.291",
+      "systemVersion": "v0.86.1"
+    }
+  },
+  "_stats": {
+    "systemId": "cyberpunk-red-core",
+    "systemVersion": "v0.86.1",
+    "coreVersion": "10.291",
+    "createdTime": null,
+    "modifiedTime": 1681584042365,
+    "lastModifiedBy": "j6d0OeWEku7u2rFF"
+  }
+}
