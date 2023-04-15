@@ -1,0 +1,52 @@
+// Rolls attack and damage for a token's equipped melee weapon
+const skipPrompt = true;
+
+Main();
+
+function Main()
+{
+    let myActor = GetActor();
+    if (myActor)
+    {
+        let EquippedMeleeWeapons = GetEquippedMeleeWeapons(myActor);
+        if (EquippedMeleeWeapons.length > 0)
+            UseWeapon(EquippedMeleeWeapons[0]);
+        else
+            ui.notifications.warn("[" + myActor.name + "] has no melee weapons equipped!");
+    }
+    else
+    {
+        ui.notifications.warn("Please select a token!");
+    }
+}
+
+async function UseWeapon(Weapon)
+{
+    {
+        const rollType = "attack";
+        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});
+    }
+    {
+        const rollType = "damage";
+        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});
+    }   
+}
+
+function GetActor()
+{
+    let myActor;
+    if (speaker.token) myActor = game.actors.tokens[speaker.token];
+    if (!myActor) myActor = game.actors.get(speaker.actor);
+    if (!myActor)
+    {
+        return;
+    }
+    
+    return myActor;
+}
+
+function GetEquippedMeleeWeapons(myActor)
+{
+    const Weapons = myActor.itemTypes.weapon;
+    return Weapons.filter((Weapon) => Weapon.system.equipped == "equipped" && !Weapon.system.isRanged);
+}

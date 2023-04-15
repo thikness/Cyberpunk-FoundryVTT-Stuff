@@ -1,0 +1,92 @@
+// Rolls attack and damage for a token's equipped ranged weapon
+
+const skipPrompt = true; // Skips Attack/Damage prompt, not reloading
+const RollAttack = true; // Roll Attack?
+const RollDamage = true; // Roll Damage?
+const DoNotifyShotsLeft = true; // Notify the user the amount of shots the token's weapon has left?
+const DoNotifyReload = true; // Notify the user the token has to reload
+
+// Macro Body
+
+Main()
+
+function Main()
+{
+    let myActor = GetActor();
+    if (myActor)
+    {
+        const EquippedRangedWeapons = GetEquippedRangedWeapons(myActor);
+        if (EquippedRangedWeapons.length > 0)
+            UseWeapon(EquippedRangedWeapons[0]);
+        else
+             ui.notifications.warn( "[" + myActor.name + "] has no ranged weapon equipped!");
+    }
+    else
+    {
+        ui.notifications.warn("Please select a token!");
+    }
+}
+
+async function UseWeapon(Weapon)
+{
+    const WeaponHasAmmo = Weapon.system.magazine.value != 0;
+    if (WeaponHasAmmo)
+    {
+        FireWeapon(Weapon); 
+        
+        NotifyWeaponInfo(Weapon);
+    }
+    else
+    {
+        // Reload
+        await Weapon._loadItem();
+    }
+}
+
+function NotifyWeaponInfo(Weapon)
+{
+    const HasAmmoLeft = Weapon.system.magazine.value >= 1;
+    
+    if (DoNotifyShotsLeft && HasAmmoLeft)
+    {
+        const ShotString = Weapon.system.magazine.value == 1 ? " shot left" : " shots left";
+        ui.notifications.info(Weapon.system.magazine.value + ShotString);
+    }
+    else if (DoNotifyReload && !HasAmmoLeft)
+    {
+        ui.notifications.warn("You shot your load, NOW RELOAD!");
+    }
+}
+
+async function FireWeapon(Weapon)
+{
+    if (RollAttack)
+    {
+        const rollType = "attack";
+        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});
+    }
+    if (RollDamage)
+    {
+        const rollType = "damage";
+        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});
+    }   
+}
+
+function GetActor()
+{
+    let myActor;
+    if (speaker.token) myActor = game.actors.tokens[speaker.token];
+    if (!myActor) myActor = game.actors.get(speaker.actor);
+    if (!myActor)
+    {
+        return;
+    }
+    
+    return myActor;
+}
+
+function GetEquippedRangedWeapons(myActor)
+{
+    const weapons = myActor.itemTypes.weapon;
+    return weapons.filter((a) => a.system.equipped == "equipped" && a.system.isRanged);
+}
