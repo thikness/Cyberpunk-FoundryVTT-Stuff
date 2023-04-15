@@ -1,1 +1,0 @@
-AudioHelper.play({src: "sounds/almostdead.mp3", volume: 0.7, autoplay: true, loop: false}, true);
