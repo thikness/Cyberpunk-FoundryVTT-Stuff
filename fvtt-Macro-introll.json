@@ -1,0 +1,32 @@
+{
+  "name": "IntRoll",
+  "type": "script",
+  "author": "j6d0OeWEku7u2rFF",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "// Configure the stat to be rolled here\n// Options are int, ref, dex, tech, cool, will, luck, move, body and emp\n\nstat = \"int\";\n\n\n//Determine the actor, whom wants to do a stat roll\nlet actor;\nif (speaker.token) actor = game.actors.tokens[speaker.token];\nif (!actor) actor = game.actors.get(speaker.actor);\n\n// Create the roll and handle the rolling\ncprRoll = actor.createRoll(\"stat\", stat)\n\nconst keepRolling = await cprRoll.handleRollDialog(event);\nif (!keepRolling) {\n  return;\n}\n\nawait cprRoll.roll();\n\ncprRoll.entityData = { actor: actor.id };\n\n// Create and show the chat message\n// This looks quire complicated, but unfortunately one cannot seem to import the CPRChat\n// inside this macro, this is why it is essentially copied into the macro.\nrenderTemplate(cprRoll.rollCard, cprRoll).then((html) => {\n    const chatData = {\n        user: game.user.id,\n        rollMode: game.settings.get(\"core\", \"rollMode\"),\n        content: html,\n    };\n    chatData.sound = CONFIG.sounds.dice;\n\n    if ([\"gmroll\", \"blindroll\"].includes(chatData.rollMode)) {\n        chatData.whisper = ChatMessage.getWhisperRecipients(\"GM\").map((u) => u.id);\n    }\n\n    if (chatData.rollMode === \"blindroll\") {\n        chatData.blind = true;\n    } else if (chatData.rollMode === \"selfroll\") {\n        chatData.whisper = [game.user];\n    }\n\n    if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {\n        let actor;\n        const actorId = cprRoll.entityData.actor;\n        [ actor ] = game.actors.filter((a) => a.id === actorId);\n        const alias = actor.name;\n        chatData.speaker = { actor, alias };\n    }\n\n    return ChatMessage.create(chatData , false);\n})",
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "advanced-macros": {
+      "runAsGM": false,
+      "runForEveryone": false,
+      "runForSpecificUser": ""
+    },
+    "exportSource": {
+      "world": "cyberpunk-red",
+      "system": "cyberpunk-red-core",
+      "coreVersion": "10.291",
+      "systemVersion": "v0.86.1"
+    }
+  },
+  "_stats": {
+    "systemId": "cyberpunk-red-core",
+    "systemVersion": "v0.86.1",
+    "coreVersion": "10.291",
+    "createdTime": 1679607350386,
+    "modifiedTime": 1679626371139,
+    "lastModifiedBy": "j6d0OeWEku7u2rFF"
+  }
+}

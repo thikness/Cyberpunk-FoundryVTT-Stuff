@@ -1,0 +1,32 @@
+{
+  "name": "MeleeAutoRoll",
+  "type": "script",
+  "author": "j6d0OeWEku7u2rFF",
+  "img": "icons/svg/dice-target.svg",
+  "scope": "global",
+  "command": "// Use Melee Weapon Macro Settings\nconst skipPrompt = true;\n\nMain();\n\nfunction Main()\n{\n    let myActor = GetActor();\n    if (myActor)\n    {\n        let EquippedMeleeWeapons = GetEquippedMeleeWeapons(myActor);\n        if (EquippedMeleeWeapons.length > 0)\n            UseWeapon(EquippedMeleeWeapons[0]);\n        else\n            ui.notifications.warn(\"[\" + myActor.name + \"] has no melee weapons equipped!\");\n    }\n    else\n    {\n        ui.notifications.warn(\"Please select a token!\");\n    }\n}\n\nasync function UseWeapon(Weapon)\n{\n    {\n        const rollType = \"attack\";\n        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});\n    }\n    {\n        const rollType = \"damage\";\n        await game.cpr.macro.rollItemMacro(Weapon.name, {skipPrompt, rollType});\n    }   \n}\n\nfunction GetActor()\n{\n    let myActor;\n    if (speaker.token) myActor = game.actors.tokens[speaker.token];\n    if (!myActor) myActor = game.actors.get(speaker.actor);\n    if (!myActor)\n    {\n        return;\n    }\n    \n    return myActor;\n}\n\nfunction GetEquippedMeleeWeapons(myActor)\n{\n    const Weapons = myActor.itemTypes.weapon;\n    return Weapons.filter((Weapon) => Weapon.system.equipped == \"equipped\" && !Weapon.system.isRanged);\n}",
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "advanced-macros": {
+      "runAsGM": false,
+      "runForEveryone": false,
+      "runForSpecificUser": ""
+    },
+    "exportSource": {
+      "world": "cyberpunk-red",
+      "system": "cyberpunk-red-core",
+      "coreVersion": "10.291",
+      "systemVersion": "v0.86.1"
+    }
+  },
+  "_stats": {
+    "systemId": "cyberpunk-red-core",
+    "systemVersion": "v0.86.1",
+    "coreVersion": "10.291",
+    "createdTime": 1679774579711,
+    "modifiedTime": 1679775457732,
+    "lastModifiedBy": "j6d0OeWEku7u2rFF"
+  }
+}

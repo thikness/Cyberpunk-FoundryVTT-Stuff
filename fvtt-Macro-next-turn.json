@@ -1,0 +1,27 @@
+{
+  "name": "Next Turn",
+  "type": "script",
+  "author": "j6d0OeWEku7u2rFF",
+  "img": "icons/svg/upgrade.svg",
+  "scope": "global",
+  "command": "/*\nAuthor: willisrocks\nDescription: \n\nEnds the current actors turn in a combat encounter. Useful when you don't pop out your combat tracker\nand want to end the turn from your hotbar.\n\nIf the user is a gamemaster, it will always end the current turn. For players, it will only end \nthe turn when the current actor in the turn order is owned by you. \n\nBased on the work of reddit user serrag97: https://www.reddit.com/r/FoundryVTT/comments/j1b8gs/next_turn_shortcut/\n*/\n\nmain()\n\nasync function main() {\n    try {\n        // If you have the Gamemaster role, you can advance\n        // the turn for any actor\n        const isGM = game.users.get(game.userId).hasRole(4);\n        if (isGM) {\n            game.combats.active.nextTurn();\n        }\n        else {\n            for(let token of canvas.tokens.controlled) {\n                if(token.id === game.combats.active.current.tokenId) {\n                    game.combats.active.nextTurn();\n                    return;\n                }\n            }\n\n            ui.notifications.info('As a player you can only advance your turn');\n        }\n\n        return;\n    } catch(e) {\n        ui.notifications.error(e);\n        return;\n    }\n}",
+  "flags": {
+    "combat-utility-belt": {
+      "macroTrigger": ""
+    },
+    "exportSource": {
+      "world": "cyberpunk-red",
+      "system": "cyberpunk-red-core",
+      "coreVersion": "10.291",
+      "systemVersion": "v0.86.1"
+    }
+  },
+  "_stats": {
+    "systemId": "cyberpunk-red-core",
+    "systemVersion": "v0.85.2",
+    "coreVersion": "10.291",
+    "createdTime": null,
+    "modifiedTime": 1672985347625,
+    "lastModifiedBy": "j6d0OeWEku7u2rFF"
+  }
+}
