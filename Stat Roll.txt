@@ -1,0 +1,54 @@
+// Select token and roll a STAT. Configure the stat to be rolled here
+// Options are int, ref, dex, tech, cool, will, luck, move, body and emp
+
+stat = "int";
+
+
+//Determine the actor, whom wants to do a stat roll
+let actor;
+if (speaker.token) actor = game.actors.tokens[speaker.token];
+if (!actor) actor = game.actors.get(speaker.actor);
+
+// Create the roll and handle the rolling
+cprRoll = actor.createRoll("stat", stat)
+
+const keepRolling = await cprRoll.handleRollDialog(event);
+if (!keepRolling) {
+  return;
+}
+
+await cprRoll.roll();
+
+cprRoll.entityData = { actor: actor.id };
+
+// Create and show the chat message
+// This looks quire complicated, but unfortunately one cannot seem to import the CPRChat
+// inside this macro, this is why it is essentially copied into the macro.
+renderTemplate(cprRoll.rollCard, cprRoll).then((html) => {
+    const chatData = {
+        user: game.user.id,
+        rollMode: game.settings.get("core", "rollMode"),
+        content: html,
+    };
+    chatData.sound = CONFIG.sounds.dice;
+
+    if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
+        chatData.whisper = ChatMessage.getWhisperRecipients("GM").map((u) => u.id);
+    }
+
+    if (chatData.rollMode === "blindroll") {
+        chatData.blind = true;
+    } else if (chatData.rollMode === "selfroll") {
+        chatData.whisper = [game.user];
+    }
+
+    if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {
+        let actor;
+        const actorId = cprRoll.entityData.actor;
+        [ actor ] = game.actors.filter((a) => a.id === actorId);
+        const alias = actor.name;
+        chatData.speaker = { actor, alias };
+    }
+
+    return ChatMessage.create(chatData , false);
+})
